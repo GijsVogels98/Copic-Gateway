@@ -102,12 +102,12 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://copic-service-registry:5000/eureka/
+      defaultZone: ${EUREKA_URL}
 
 ---
 server:
  port: ${PORT:8080}
- 
+
 spring:
   application:
     name: gateway-service
