@@ -84,7 +84,7 @@ eureka:
     homePageUrl: https://${eureka.instance.hostName}/
   client:
     serviceUrl:
-      defaultZone: http://eureka.herokuapp.com/eureka/
+      defaultZone: https://copic-service-registry.herokuapp.com/
 spring:
   application:
     name: gateway-service
