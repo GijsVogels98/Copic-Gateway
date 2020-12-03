@@ -16,18 +16,23 @@
 #            - Path=/api/users/**
 spring:
   application:
-    name: gateway
+    name: GATEWAY-SERVICE
   cloud:
     discovery:
       enabled: true
     gateway:
+      routes:
+        - id: account-service
+          uri: lb://ACCOUNT-SERVICE
+          predicates:
+            - Path=/api/users/**
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
 
 server:
-  port: 8081
+  port: 8080
 
 eureka:
   client:
