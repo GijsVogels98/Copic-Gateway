@@ -53,7 +53,7 @@ eureka:
     homePageUrl: https://${eureka.instance.hostName}/
   client:
     serviceUrl:
-      defaultZone: http://eureka.herokuapp.com/eureka/
+      defaultZone: ${EUREKA_URL:http://user:password@localhost:8761}/eureka/
 spring:
   application:
     name: GATEWAY-SERVICE
