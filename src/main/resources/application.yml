@@ -80,11 +80,11 @@ server:
 
 eureka:
   instance:
-    hostname: copic-heroku-gateway.herokuapp.com
+    hostname: gateway.herokuapp.com
     homePageUrl: https://${eureka.instance.hostName}/
   client:
     serviceUrl:
-      defaultZone: https://copic-service-registry.herokuapp.com/
+      defaultZone: ${EUREKA_URL:http://user:password@localhost:8761}/eureka/
 spring:
   application:
     name: gateway-service
