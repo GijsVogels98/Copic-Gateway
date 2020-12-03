@@ -75,28 +75,45 @@
 #    org.springframework.cloud.gateway: TRACE
 
 #
-server:
-  port: ${PORT:8080}
+#server:
+#  port: ${PORT:8080}
+#
+#eureka:
+#  instance:
+#    hostname: copic-gateway.herokuapp.com
+#    homePageUrl: https://${eureka.instance.hostName}/
+#  client:
+#    serviceUrl:
+#      defaultZone: ${EUREKA_URL:http://user:password@localhost:8761}/eureka/
+#spring:
+#  application:
+#    name: gateway-service
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: account-service
+#          uri: lb://ACCOUNT-SERVICE:8082
+#          predicates:
+#            - Path=/api/users/**
+#logging:
+#  level:
+#    org.springframework.cloud.gateway: TRACE
 
 eureka:
-  instance:
-    hostname: copic-gateway.herokuapp.com
-    homePageUrl: https://${eureka.instance.hostName}/
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URL:http://user:password@localhost:8761}/eureka/
+      defaultZone: http://copic-service-registry:5000/eureka/
+
+---
+server:
+ port: ${PORT:8080}
+ 
 spring:
   application:
     name: gateway-service
-  cloud:
-    gateway:
-      routes:
-        - id: account-service
-          uri: lb://ACCOUNT-SERVICE:8082
-          predicates:
-            - Path=/api/users/**
-logging:
-  level:
-    org.springframework.cloud.gateway: TRACE
+eureka:
+  instance:
+    hostname: copic-gateway
+    nonSecurePort: 80
 
 
