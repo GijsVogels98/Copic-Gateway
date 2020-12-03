@@ -44,30 +44,55 @@
 #      defaultZone: ${EUREKA_URL:http://user:password@localhost:8761}/eureka/
 
 
+#server:
+#  port: 8081
+#
+#eureka:
+#  instance:
+#    hostname: gateway.herokuapp.com
+#    homePageUrl: https://${eureka.instance.hostName}/
+#  client:
+#    serviceUrl:
+#      defaultZone: ${EUREKA_URL:http://user:password@localhost:8761}/eureka/
+#spring:
+#  application:
+#    name: GATEWAY-SERVICE
+#  cloud:
+#    discovery:
+#      enabled: true
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lower-case-service-id: true
+#      routes:
+#        - id: account-service
+#          uri: lb://ACCOUNT-SERVICE
+#          predicates:
+#            - Path=/api/users/**
+#logging:
+#  level:
+#    org.springframework.cloud.gateway: TRACE
+
+
 server:
-  port: 8081
+  port: ${PORT:8080}
 
 eureka:
   instance:
-    hostname: gateway.herokuapp.com
+    hostname: copic-heroku-gateway.herokuapp.com
     homePageUrl: https://${eureka.instance.hostName}/
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URL:http://user:password@localhost:8761}/eureka/
+      defaultZone: http://eureka.herokuapp.com/eureka/
 spring:
   application:
-    name: GATEWAY-SERVICE
+    name: gateway-service
   cloud:
-    discovery:
-      enabled: true
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
       routes:
         - id: account-service
-          uri: lb://ACCOUNT-SERVICE
+          uri: lb://MICROSERVICE
           predicates:
             - Path=/api/users/**
 logging:
