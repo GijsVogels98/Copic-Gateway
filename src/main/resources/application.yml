@@ -162,7 +162,8 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI}
+      defaultZone: http://copic-service-registry.herokuapp.com/eureka/
+#      defaultZone: ${EUREKA_URI}
 spring:
   application:
     name: gateway-service
